@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Reference: https://github.com/visualstudioextensibility/VSX-Samples -->
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <Extern href="stdidcmd.h"/>
+    <Extern href="vsshlids.h"/>
+    <Include href="KnownImageIds.vsct"/>
+    <Include href="VSGlobals.vsct"/>
+
+    <Commands package="guidVSPackageCommandFileContextMenu">
+        <Groups>
+            <Group guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" />
+        </Groups>
+        <Buttons>
+            <Button guid="guidVSPackageCommandFileContextMenuCmdSet" id="AddRelatedCsFileCommandId" type="Button">
+                <Strings>
+                    <ButtonText>Add .cs File</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+    </Commands>
+
+    <CommandPlacements>
+        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+            <!-- The parent of the group will be the file context menu -->
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+            <!-- The parent of the group will be the Web file context menu -->
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+            <!-- The parent of the group will be the file context menu when more than one file is selected in the same project -->
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_PROJITEM"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+            <!-- The parent of the group will be the file context menu when more than one file is selected in different projects -->
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIITEM"/>
+        </CommandPlacement>
+
+        <!-- Placement for command. The parent of a command is always a group, never a menu, context menu or toolbar. -->
+        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="AddRelatedCsFileCommandId" priority="0x0001" >
+            <Parent guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands"/>
+        </CommandPlacement>
+    </CommandPlacements>
+
+    <Symbols>
+        <GuidSymbol name="guidVSPackageCommandFileContextMenu" value="{cf77420c-3198-42b5-b6da-9c75c3224ab0}" />
+        <GuidSymbol name="guidVSPackageCommandFileContextMenuCmdSet" value="{6b2da8a6-e68b-4068-82eb-2b533d5de2a6}">
+            <IDSymbol name="MyGroupForCommands" value="0x1020" />
+            <IDSymbol name="AddRelatedCsFileCommandId" value="0x0100" />
+        </GuidSymbol>
+    </Symbols>
+
+</CommandTable>
