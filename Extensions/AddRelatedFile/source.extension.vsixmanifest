@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="AddRelatedFile.250ee36c-eab9-4b63-a779-b6fa1834e1fb" Version="1.0" Language="en-GB" Publisher="Mark Willmer" />
-        <DisplayName>AddRelatedFile</DisplayName>
+        <DisplayName>Add Related File</DisplayName>
         <Description xml:space="preserve">Add related file</Description>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>

@@ -7,48 +7,93 @@
     <Include href="KnownImageIds.vsct"/>
     <Include href="VSGlobals.vsct"/>
 
-    <Commands package="guidVSPackageCommandFileContextMenu">
+    <Commands package="guidAddRelatedFile">
         <Groups>
-            <Group guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" />
+            <Group guid="guidAddRelatedFileCmdSet" id="SubmenuGroupId" />
+            <Group guid="guidAddRelatedFileCmdSet" id="CommandGroupId" />
         </Groups>
-        <Buttons>
-            <Button guid="guidVSPackageCommandFileContextMenuCmdSet" id="AddRelatedCsFileCommandId" type="Button">
+        <Menus>
+            <Menu guid="guidAddRelatedFileCmdSet" id="SubmenuMenuId" type="Menu">
                 <Strings>
-                    <ButtonText>Add .cs File</ButtonText>
+                    <ButtonText>Add Related File</ButtonText>
+                </Strings>
+            </Menu>
+        </Menus>
+        <Buttons>
+            <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedCsFileCommandId" type="Button">
+                <Strings>
+                    <ButtonText>.cs</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedJsFileCommandId" type="Button">
+                <Strings>
+                    <ButtonText>.js</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedResxFileCommandId" type="Button">
+                <Strings>
+                    <ButtonText>.resx</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedScssFileCommandId" type="Button">
+                <Strings>
+                    <ButtonText>.scss</ButtonText>
                 </Strings>
             </Button>
         </Buttons>
     </Commands>
 
     <CommandPlacements>
-        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="SubmenuGroupId" priority="0x0100">
             <!-- The parent of the group will be the file context menu -->
             <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
         </CommandPlacement>
-        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
-            <!-- The parent of the group will be the Web file context menu -->
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="SubmenuGroupId" priority="0x0100">
+            <!-- The parent of the group will be the web file context menu -->
             <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE"/>
         </CommandPlacement>
-        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="SubmenuGroupId" priority="0x0100">
             <!-- The parent of the group will be the file context menu when more than one file is selected in the same project -->
             <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_PROJITEM"/>
         </CommandPlacement>
-        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="SubmenuGroupId" priority="0x0100">
             <!-- The parent of the group will be the file context menu when more than one file is selected in different projects -->
             <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIITEM"/>
         </CommandPlacement>
 
-        <!-- Placement for command. The parent of a command is always a group, never a menu, context menu or toolbar. -->
-        <CommandPlacement guid="guidVSPackageCommandFileContextMenuCmdSet" id="AddRelatedCsFileCommandId" priority="0x0001" >
-            <Parent guid="guidVSPackageCommandFileContextMenuCmdSet" id="MyGroupForCommands"/>
+        <!-- Placement for submenu and submenu group. -->
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="SubmenuMenuId" priority="0x0001">
+            <Parent guid="guidAddRelatedFileCmdSet" id="SubmenuGroupId"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="CommandGroupId" priority="0x0001">
+            <Parent guid="guidAddRelatedFileCmdSet" id="SubmenuMenuId"/>
+        </CommandPlacement>
+
+        <!-- Placement of commands. The parent of a command is always a group, never a menu, context menu or toolbar. -->
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="AddRelatedCsFileCommandId" priority="0x0001" >
+            <Parent guid="guidAddRelatedFileCmdSet" id="CommandGroupId"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="AddRelatedJsFileCommandId" priority="0x0002" >
+            <Parent guid="guidAddRelatedFileCmdSet" id="CommandGroupId"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="AddRelatedResxFileCommandId" priority="0x0003" >
+            <Parent guid="guidAddRelatedFileCmdSet" id="CommandGroupId"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidAddRelatedFileCmdSet" id="AddRelatedScssFileCommandId" priority="0x0004" >
+            <Parent guid="guidAddRelatedFileCmdSet" id="CommandGroupId"/>
         </CommandPlacement>
     </CommandPlacements>
 
     <Symbols>
-        <GuidSymbol name="guidVSPackageCommandFileContextMenu" value="{cf77420c-3198-42b5-b6da-9c75c3224ab0}" />
-        <GuidSymbol name="guidVSPackageCommandFileContextMenuCmdSet" value="{6b2da8a6-e68b-4068-82eb-2b533d5de2a6}">
-            <IDSymbol name="MyGroupForCommands" value="0x1020" />
-            <IDSymbol name="AddRelatedCsFileCommandId" value="0x0100" />
+        <GuidSymbol name="guidAddRelatedFile" value="{d2cc7f26-42fb-4c8d-858f-05f3fc3599d5}" />
+        <GuidSymbol name="guidAddRelatedFileCmdSet" value="{bea4976d-811a-4dd0-9745-0bed7a658b5d}">
+            <IDSymbol name="SubmenuGroupId" value="0x1020" />
+            <IDSymbol name="CommandGroupId" value="0x1021" />
+            <IDSymbol name="SubmenuMenuId" value="0x0100" />
+            <IDSymbol name="AddRelatedCsFileCommandId" value="0x0101" />
+            <IDSymbol name="AddRelatedJsFileCommandId" value="0x0102" />
+            <IDSymbol name="AddRelatedResxFileCommandId" value="0x0103" />
+            <IDSymbol name="AddRelatedScssFileCommandId" value="0x0104" />
         </GuidSymbol>
     </Symbols>
 

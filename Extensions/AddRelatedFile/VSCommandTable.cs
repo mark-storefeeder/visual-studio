@@ -12,18 +12,23 @@ namespace AddRelatedFile
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidVSPackageCommandFileContextMenuString = "cf77420c-3198-42b5-b6da-9c75c3224ab0";
-        public static Guid guidVSPackageCommandFileContextMenu = new Guid(guidVSPackageCommandFileContextMenuString);
+        public const string guidAddRelatedFileString = "d2cc7f26-42fb-4c8d-858f-05f3fc3599d5";
+        public static Guid guidAddRelatedFile = new Guid(guidAddRelatedFileString);
 
-        public const string guidVSPackageCommandFileContextMenuCmdSetString = "6b2da8a6-e68b-4068-82eb-2b533d5de2a6";
-        public static Guid guidVSPackageCommandFileContextMenuCmdSet = new Guid(guidVSPackageCommandFileContextMenuCmdSetString);
+        public const string guidAddRelatedFileCmdSetString = "bea4976d-811a-4dd0-9745-0bed7a658b5d";
+        public static Guid guidAddRelatedFileCmdSet = new Guid(guidAddRelatedFileCmdSetString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int MyGroupForCommands = 0x1020;
-        public const int AddRelatedCsFileCommandId = 0x0100;
+        public const int SubmenuGroupId = 0x1020;
+        public const int CommandGroupId = 0x1021;
+        public const int SubmenuMenuId = 0x0100;
+        public const int AddRelatedCsFileCommandId = 0x0101;
+        public const int AddRelatedJsFileCommandId = 0x0102;
+        public const int AddRelatedResxFileCommandId = 0x0103;
+        public const int AddRelatedScssFileCommandId = 0x0104;
     }
 }
