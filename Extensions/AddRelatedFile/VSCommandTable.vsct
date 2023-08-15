@@ -21,21 +21,29 @@
         </Menus>
         <Buttons>
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedCsFileCommandId" type="Button">
+                <Icon guid="ImageCatalogGuid" id="CSFileNode" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>.cs</ButtonText>
                 </Strings>
             </Button>
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedJsFileCommandId" type="Button">
+                <Icon guid="ImageCatalogGuid" id="JSScript" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>.js</ButtonText>
                 </Strings>
             </Button>
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedResxFileCommandId" type="Button">
+                <Icon guid="ImageCatalogGuid" id="Copy" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>.resx</ButtonText>
                 </Strings>
             </Button>
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedScssFileCommandId" type="Button">
+                <Icon guid="ImageCatalogGuid" id="SASSStyleSheet" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>.scss</ButtonText>
                 </Strings>
