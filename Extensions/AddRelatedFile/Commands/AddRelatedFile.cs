@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.Design;
-using System.IO;
 using EnvDTE;
-using Microsoft.VisualStudio.Shell.Interop;
 
 namespace AddRelatedFile.Commands;
 
@@ -79,17 +77,7 @@ internal sealed class AddRelatedFile
                 break;
             }
 
-            var newFileName = $"{selectedItem.ProjectItem.Name}.{extension}";
-
-            if (File.Exists(newFileName))
-            {
-                VsShellUtilities.ShowMessageBox(ServiceProvider, $"{selectedItem.ProjectItem.Name} already exists so has not been created.", Vsix.Name,
-                    OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-                return;
-            }
-
-            dte.ItemOperations.AddNewItem(itemTemplate, newFileName);
+            dte.ItemOperations.AddNewItem(itemTemplate, $"{selectedItem.ProjectItem.Name}.{extension}");
 
             if (callback is not null)
             {
