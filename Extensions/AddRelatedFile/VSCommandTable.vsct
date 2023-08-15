@@ -23,6 +23,7 @@
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedCsFileCommandId" type="Button">
                 <Icon guid="ImageCatalogGuid" id="CSFileNode" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>.cs</ButtonText>
                 </Strings>
@@ -30,6 +31,7 @@
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedJsFileCommandId" type="Button">
                 <Icon guid="ImageCatalogGuid" id="JSScript" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>.js</ButtonText>
                 </Strings>
@@ -37,6 +39,7 @@
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedResxFileCommandId" type="Button">
                 <Icon guid="ImageCatalogGuid" id="Copy" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>.resx</ButtonText>
                 </Strings>
@@ -44,6 +47,7 @@
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedScssFileCommandId" type="Button">
                 <Icon guid="ImageCatalogGuid" id="SASSStyleSheet" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>.scss</ButtonText>
                 </Strings>
@@ -84,6 +88,13 @@
         </CommandPlacement>
     </CommandPlacements>
 
+    <VisibilityConstraints>
+        <VisibilityItem guid="guidAddRelatedFileCmdSet" id="AddRelatedCsFileCommandId" context="uiContextSupportedFiles" />
+        <VisibilityItem guid="guidAddRelatedFileCmdSet" id="AddRelatedJsFileCommandId" context="uiContextSupportedFiles" />
+        <VisibilityItem guid="guidAddRelatedFileCmdSet" id="AddRelatedResxFileCommandId" context="uiContextSupportedFiles" />
+        <VisibilityItem guid="guidAddRelatedFileCmdSet" id="AddRelatedScssFileCommandId" context="uiContextSupportedFiles" />
+    </VisibilityConstraints>
+
     <Symbols>
         <GuidSymbol name="guidAddRelatedFile" value="{d2cc7f26-42fb-4c8d-858f-05f3fc3599d5}" />
         <GuidSymbol name="guidAddRelatedFileCmdSet" value="{bea4976d-811a-4dd0-9745-0bed7a658b5d}">
@@ -95,6 +106,7 @@
             <IDSymbol name="AddRelatedResxFileCommandId" value="0x0103" />
             <IDSymbol name="AddRelatedScssFileCommandId" value="0x0104" />
         </GuidSymbol>
+        <GuidSymbol name="uiContextSupportedFiles" value="{886bd357-2bf8-48e8-85af-d0cf9cc70188}" />
     </Symbols>
 
 </CommandTable>

@@ -17,6 +17,9 @@ namespace AddRelatedFile
 
         public const string guidAddRelatedFileCmdSetString = "bea4976d-811a-4dd0-9745-0bed7a658b5d";
         public static Guid guidAddRelatedFileCmdSet = new Guid(guidAddRelatedFileCmdSetString);
+
+        public const string uiContextSupportedFilesString = "886bd357-2bf8-48e8-85af-d0cf9cc70188";
+        public static Guid uiContextSupportedFiles = new Guid(uiContextSupportedFilesString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.

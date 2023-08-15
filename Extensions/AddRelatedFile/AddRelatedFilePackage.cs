@@ -1,6 +1,8 @@
 ﻿global using System;
 global using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AddRelatedFile;
 
@@ -8,11 +10,18 @@ namespace AddRelatedFile;
 [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
 [Guid(PackageGuidString)]
 [ProvideMenuResource("Menus.ctmenu", 1)]
+[ProvideUIContextRule(UiContextSupportedFilesString,
+    name: "Supported Files",
+    expression: "Razor",
+    termNames: new[] { "Razor" },
+    termValues: new[] { "HierSingleSelectionName:.razor$" })]
 public sealed class VSPackageCommandFileContextMenu : AsyncPackage
 {
     public const string PackageGuidString = PackageGuids.guidAddRelatedFileString;
 
-    protected override async System.Threading.Tasks.Task InitializeAsync(System.Threading.CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+    public const string UiContextSupportedFilesString = PackageGuids.uiContextSupportedFilesString;
+
+    protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
     {
         await base.InitializeAsync(cancellationToken, progress);
 
@@ -23,6 +32,3 @@ public sealed class VSPackageCommandFileContextMenu : AsyncPackage
         Commands.AddRelatedFile.Initialize(this);
     }
 }
-
-// TODO:
-// 1. Only show the menu item if you've right-clicked on a .razor file.

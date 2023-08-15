@@ -22,10 +22,21 @@ internal sealed class AddRelatedFile
             return;
         }
 
-        commandService.AddCommand(new MenuCommand(AddRelatedCsFile, new CommandID(CommandSetGuid, PackageIds.AddRelatedCsFileCommandId)));
-        commandService.AddCommand(new MenuCommand(AddRelatedJsFile, new CommandID(CommandSetGuid, PackageIds.AddRelatedJsFileCommandId)));
-        commandService.AddCommand(new MenuCommand(AddRelatedResxFile, new CommandID(CommandSetGuid, PackageIds.AddRelatedResxFileCommandId)));
-        commandService.AddCommand(new MenuCommand(AddRelatedScssFile, new CommandID(CommandSetGuid, PackageIds.AddRelatedScssFileCommandId)));
+        var addCsFileCommandId = new CommandID(CommandSetGuid, PackageIds.AddRelatedCsFileCommandId);
+        var addJsFileCommandId = new CommandID(CommandSetGuid, PackageIds.AddRelatedJsFileCommandId);
+        var addResxFileCommandId = new CommandID(CommandSetGuid, PackageIds.AddRelatedResxFileCommandId);
+        var addScssFileCommandId = new CommandID(CommandSetGuid, PackageIds.AddRelatedScssFileCommandId);
+
+        // Defer the visibility logic back to the VisibilityConstraints in the .vsct file:
+        var addCsFileCommand = new OleMenuCommand(AddRelatedCsFile, addCsFileCommandId) { Supported = false };
+        var addJsFileCommand = new OleMenuCommand(AddRelatedJsFile, addJsFileCommandId) { Supported = false };
+        var addResxFileCommand = new OleMenuCommand(AddRelatedResxFile, addResxFileCommandId) { Supported = false };
+        var addScssFileCommand = new OleMenuCommand(AddRelatedScssFile, addScssFileCommandId) { Supported = false };
+
+        commandService.AddCommand(addCsFileCommand);
+        commandService.AddCommand(addJsFileCommand);
+        commandService.AddCommand(addResxFileCommand);
+        commandService.AddCommand(addScssFileCommand);
     }
 
     public static void Initialize(Package package) => Instance = new AddRelatedFile(package);
