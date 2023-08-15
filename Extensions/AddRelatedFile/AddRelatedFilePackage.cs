@@ -26,7 +26,3 @@ public sealed class VSPackageCommandFileContextMenu : AsyncPackage
 
 // TODO:
 // 1. Only show the menu item if you've right-clicked on a .razor file.
-// 2. Add content to files where possible - e.g. .cs files should have an empty class in them already.
-// 3. Show a single error for all files which already exist rather than one error per file - i.e. outside the loop.
-// 4. Open files in the editor after they're created.
-// 5. Add icon(s).

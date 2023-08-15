@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Design;
 using System.IO;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace AddRelatedFile.Commands;
@@ -35,7 +36,13 @@ internal sealed class AddRelatedFile
     {
         ThreadHelper.ThrowIfNotOnUIThread();
 
-        AddFile("cs");
+        AddFile("cs", @"Visual C#\Code\Class", callback: dte =>
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            (dte.ActiveDocument.Object() as TextDocument).ReplaceText("public class", "public partial class");
+            dte.ActiveDocument.Save();
+        });
     }
 
     private void AddRelatedJsFile(object sender, EventArgs e)
@@ -59,36 +66,35 @@ internal sealed class AddRelatedFile
         AddFile("scss");
     }
 
-    private void AddFile(string extension)
+    private void AddFile(string extension, string itemTemplate = @"Visual C#\Code\Code File", Action<DTE> callback = null)
     {
         ThreadHelper.ThrowIfNotOnUIThread();
 
-        var dte = ServiceProvider.GetService<EnvDTE.DTE, EnvDTE.DTE>();
+        var dte = ServiceProvider.GetService<DTE, DTE>();
 
-        if (dte.SelectedItems is null)
-        {
-            return;
-        }
-
-        foreach (EnvDTE.SelectedItem selectedItem in dte.SelectedItems)
+        foreach (SelectedItem selectedItem in dte.SelectedItems)
         {
             if (selectedItem.ProjectItem is null)
             {
                 break;
             }
 
-            var filePath = selectedItem.ProjectItem.Properties.Item("FullPath").Value.ToString();
-            var newFilePath = $"{filePath}.{extension}";
+            var newFileName = $"{selectedItem.ProjectItem.Name}.{extension}";
 
-            if (File.Exists(newFilePath))
+            if (File.Exists(newFileName))
             {
-                VsShellUtilities.ShowMessageBox(ServiceProvider, $"{newFilePath} already exists so has not been created.", "Add Related File",
+                VsShellUtilities.ShowMessageBox(ServiceProvider, $"{selectedItem.ProjectItem.Name} already exists so has not been created.", Vsix.Name,
                     OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
                 return;
             }
 
-            File.Create(newFilePath).Close();
+            dte.ItemOperations.AddNewItem(itemTemplate, newFileName);
+
+            if (callback is not null)
+            {
+                callback(dte);
+            }
         }
     }
 }
