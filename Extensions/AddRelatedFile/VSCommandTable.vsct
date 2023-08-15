@@ -37,7 +37,7 @@
                 </Strings>
             </Button>
             <Button guid="guidAddRelatedFileCmdSet" id="AddRelatedResxFileCommandId" type="Button">
-                <Icon guid="ImageCatalogGuid" id="Copy" />
+                <Icon guid="ImageCatalogGuid" id="FileGroupDefault" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
