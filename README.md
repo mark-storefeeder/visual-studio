@@ -15,7 +15,7 @@ Add Related File is an extension for Visual Studio which allows you to quickly a
 
 #### Installation
 
-Download and run `Extensions/AddRelatedFile.vsix`.
+Download and run [Extensions/AddRelatedFile.vsix](https://github.com/mark-storefeeder/visual-studio/blob/main/Extensions/AddRelatedFile.vsix).
 
 #### Usage
 
